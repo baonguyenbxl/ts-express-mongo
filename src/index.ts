@@ -2,6 +2,8 @@ import express, { Express,Request, Response } from "express";
 import dotenv from "dotenv";
 dotenv.config();
 import config from "./config";
+import connectDB from "./api/mongoose";
+
 
 import jobRoutes from "./api/routes/job"
 import userRoutes from "./api/routes/user"
@@ -29,7 +31,8 @@ app.use( "/company", locationRoutes )
 app.use( "/technician", technicianRoutes )
 app.use( "/payment", paymentRoutes )
 
-app.listen( port, () =>
+app.listen( port, async () =>
 {
-  console.log('server is running on ',port);
+  console.log( 'server is running on ', port );
+  await connectDB(config.dbUri);
 })
