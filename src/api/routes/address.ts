@@ -1,10 +1,13 @@
-import express, {Router, Request,Response,NextFunction} from 'express'
-const router:Router = express.Router();
+import express, { Router, Request, Response, NextFunction } from 'express'
+const router: Router = express.Router();
 
 
-router.get( '/', ( req:Request, res:Response, next:NextFunction ) =>
+router.get( '/', ( req: Request, res: Response, next: NextFunction ) =>
 {
-  res.status( 200 ).send( { message: "get address" } )
+  const address = {
+    street: "rue de la tulipe"
+  }
+  res.status( 200 ).send( { message: "get address", data: address } )
 } );
 router.post( "/", ( req: Request, res: Response, next: NextFunction ) =>
 {

@@ -6,7 +6,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const router = express_1.default.Router();
 router.get('/', (req, res, next) => {
-    res.status(200).send({ message: "get address" });
+    const address = {
+        street: "rue de la tulipe"
+    };
+    res.status(200).send({ message: "get address", data: address });
 });
 router.post("/", (req, res, next) => {
     res.status(200).send({ message: "post address" });
